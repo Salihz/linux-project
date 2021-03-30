@@ -82,6 +82,7 @@ test "$UserN" == "$USERN" && echo "Yes" || echo "No"
 #fi
 
 
+#<<<<<<< yordi
 
 for num in $(seq 0 5)
 do
@@ -129,7 +130,9 @@ echo "=======================
 #read -p "Enter another number >> " num2
 
 #divide $num1  $num2
-=======
+#=======
+#=======
+#>>>>>>> master
 #
 echo "-----Section 9 - Using for loop print numbers from 0 to 5, also print the number of the line-----"
 
@@ -205,7 +208,11 @@ Create a fiunction that divides two numbers and multiplies the result of the div
 '
 
 calculate () {
+#<<<<<<< yordi
   local result=$(( $1 / $2 * $3 - $4 ))
+=======
+  local result=$(($1 / $2 * $3 - $4))
+#>>>>>>> master
   echo "$result"
 }
 
@@ -217,6 +224,7 @@ echo "The sum is: "$result
 echo "-----Section 13 - Create a function that prints env variables, print today's day and finds reminder of division of 10 and 3-----"
 
 func () {
+#<<<<<<< yordi
 local DATE=$((date))
 local reminder=$(($1 % $2))
 echo "$reminder"
@@ -236,3 +244,14 @@ mul=$(multiply 4 34)
 echo "$mul"
 
                      echo"END OF THE CHALLENGE"
+#=======
+
+local reminder=$(($1 % $2))
+echo "$reminder"
+
+}
+reminder="$(func 10 3)"
+
+echo "Reminder of 10/3 is: "$reminder 
+
+#>>>>>>> master
