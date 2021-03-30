@@ -10,10 +10,12 @@ echo "-----Section 2 - Print a text with  command substitution, use any command 
 
 echo "todays date is  $(date)"
 
+
 #
 echo "-----Section 3 - Print env variables inside the other things-----"
 
 echo "Host name: $HOSTNAME User name: $USER Present wordking directory: $PWD"
+
 
 #
 echo "-----Section 4 - Printing several mathematical operations. Addition, subtraction, multiplication and division-----"
@@ -21,6 +23,7 @@ echo "-----Section 4 - Printing several mathematical operations. Addition, subtr
 result=$(($1 + $2 * $3 / $4 - $5))
 echo "The result is $result"
 #above way you need to pass the parametes when you are executing the file: ./filename.sh 4 6 7 2
+
 
 #
 echo "----- Section 5 - Create an if/else statement and do some action if  true and if false-----"
@@ -35,13 +38,15 @@ else
 fi
 #exit
 
+clear
 #
-echo -e "-----Section 6 - Test something using the test command-----"
+echo "-----Section 6 - Test something using the test command-----"
 
 # comparing two values:  -lt >> less than, -gt >> greater than, -eq >> equal
 test 99 -lt 100 && echo "Yes" || echo "No"
 test 99 -gt 100 && echo "Yes" || echo "No"
 test 100 -eq 100 && echo "Yes" || echo "No"
+
 
 #
 echo "-----Section 7 -  Use if statements to compare with -eq, -ne, -gt and -le -----"
@@ -60,8 +65,9 @@ else [[ "Number" -le 100 ]]
 echo "$Number is less than or equal to 100"
 fi
 
+
 #
-echo -e "-----Section 8 - Using the read command, prompt user  compare strings, check credentials >> user name and password"
+echo "-----Section 8 - Using the read command, prompt user  compare strings, check credentials >> user name and password-----"
 
 echo read -p "enter your user name"
 read UserN
@@ -74,6 +80,7 @@ test "$UserN" == "$USERN" && echo "Yes" || echo "No"
 #else
 #echo "incorrect user name"
 #fi
+
 
 
 for num in $(seq 0 5)
@@ -109,16 +116,122 @@ done
 
 echo "=======================
 # Function
-divide(){
-div=$(($1/$2))
-echo " The division of $1 and $2 is $div "
+#divide(){
+#div=$(($1/$2))
+#echo " The division of $1 and $2 is $div "
+#}
+
+#multiply(){
+#mul=$((div))
+#echo "The mult is $mul"
+#}
+#read -p "Enter a number >> " num1
+#read -p "Enter another number >> " num2
+
+#divide $num1  $num2
+=======
+#
+echo "-----Section 9 - Using for loop print numbers from 0 to 5, also print the number of the line-----"
+
+#for i in 0 1 2 3 4 5
+for i in $(seq 0 5)
+do
+echo $((i+1)) $i
+done
+
+
+#
+echo "-----Section 10 - using while loop print all even numbers from 1 to 20-----"
+
+num=20
+i=1
+while [ $i -le $num ]
+do
+if [ $(expr $i % 2) -eq 0 ]
+then
+echo $i
+fi
+i=$(expr $i + 1)
+done
+
+
+echo "### solution using seq ###"
+
+for i in $(seq 2 2 20)
+do
+   echo $i
+done
+
+
+echo -e "\n### print both  even and odd numbers with indicator of even and odd###"
+num=20
+i=1
+while [ $i -le $num ]
+do
+if [ $(expr $i % 2) -eq 0 ]
+then
+echo evenNum=$i
+else
+echo oddNum=$i
+fi
+i=$(expr $i + 1)
+done
+
+
+#
+echo "-----Section 11 - Using Until loop print all odd numbers from 1 to 20-----"
+
+i=0
+until [ $i -gt 20 ]
+do
+if [ $(expr $i % 2) -ne 0  ]
+then
+echo $(($i))
+fi
+i=$(expr $i + 1)
+done
+
+
+
+
+
+
+#
+echo "-----Section 12-----"
+
+: '
+Create a fiunction that divides two numbers and multiplies the result of the division by 10 and then 
+10 is substract it from result. Print the result. Call the function passing two numbers
+'
+
+calculate () {
+  local result=$(( $1 / $2 * $3 - $4 ))
+  echo "$result"
 }
 
-multiply(){
-mul=$((div))
-echo "The mult is $mul"
-}
-read -p "Enter a number >> " num1
-read -p "Enter another number >> " num2
+result="$(calculate 21 7 10 10)"
+echo "The sum is: "$result
 
-divide $num1  $num2
+
+#
+echo "-----Section 13 - Create a function that prints env variables, print today's day and finds reminder of division of 10 and 3-----"
+
+func () {
+local DATE=$((date))
+local reminder=$(($1 % $2))
+echo "$reminder"
+echo "$DATE"
+}
+reminder="$(func 10 3)"
+DATE=$(date)
+echo -e "Today date is $DATE \nReminder of 10/3 is: "$reminder 
+#echo "$DATE"
+
+# Mul
+multiply (){
+local mul=$(( $1 * $2 ))
+echo "$mul"
+}
+mul=$(multiply 4 34)
+echo "$mul"
+
