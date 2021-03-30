@@ -82,6 +82,57 @@ test "$UserN" == "$USERN" && echo "Yes" || echo "No"
 #fi
 
 
+#<<<<<<< yordi
+
+for num in $(seq 0 5)
+do
+echo $((num+1)) $num 
+done
+echo "======================"
+
+# WHILE LOOP
+NUM=0
+while [ $NUM -lt 20 ]
+do
+Remainder=$(( $NUM % 2 ))
+if [ $Remainder -eq  0 ]
+then
+echo " $NUM "
+fi
+NUM=$((NUM+1))
+done
+echo "================="
+
+# UNTIL loop
+NUM=1
+until [ $NUM -gt 20 ]
+do
+Remainder=$(( $NUM % 2 ))
+if [ $Remainder -ne  0 ]
+then
+echo " $NUM "
+fi
+NUM=$((NUM+1))
+done
+
+echo "=======================
+# Function
+#divide(){
+#div=$(($1/$2))
+#echo " The division of $1 and $2 is $div "
+#}
+
+#multiply(){
+#mul=$((div))
+#echo "The mult is $mul"
+#}
+#read -p "Enter a number >> " num1
+#read -p "Enter another number >> " num2
+
+#divide $num1  $num2
+#=======
+#=======
+#>>>>>>> master
 #
 echo "-----Section 9 - Using for loop print numbers from 0 to 5, also print the number of the line-----"
 
@@ -157,7 +208,11 @@ Create a fiunction that divides two numbers and multiplies the result of the div
 '
 
 calculate () {
+#<<<<<<< yordi
+  local result=$(( $1 / $2 * $3 - $4 ))
+=======
   local result=$(($1 / $2 * $3 - $4))
+#>>>>>>> master
   echo "$result"
 }
 
@@ -169,6 +224,27 @@ echo "The sum is: "$result
 echo "-----Section 13 - Create a function that prints env variables, print today's day and finds reminder of division of 10 and 3-----"
 
 func () {
+#<<<<<<< yordi
+local DATE=$((date))
+local reminder=$(($1 % $2))
+echo "$reminder"
+echo "$DATE"
+}
+reminder="$(func 10 3)"
+DATE=$(date)
+echo -e "Today date is $DATE \nReminder of 10/3 is: "$reminder 
+#echo "$DATE"
+
+# Mul
+multiply (){
+local mul=$(( $1 * $2 ))
+echo "$mul"
+}
+mul=$(multiply 4 34)
+echo "$mul"
+
+                     echo"END OF THE CHALLENGE"
+#=======
 
 local reminder=$(($1 % $2))
 echo "$reminder"
@@ -178,3 +254,4 @@ reminder="$(func 10 3)"
 
 echo "Reminder of 10/3 is: "$reminder 
 
+#>>>>>>> master
