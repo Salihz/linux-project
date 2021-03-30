@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 echo "-----Section 1 -  Printing  a text-----"
@@ -74,3 +75,50 @@ test "$UserN" == "$USERN" && echo "Yes" || echo "No"
 #echo "incorrect user name"
 #fi
 
+
+for num in $(seq 0 5)
+do
+echo $((num+1)) $num 
+done
+echo "======================"
+
+# WHILE LOOP
+NUM=0
+while [ $NUM -lt 20 ]
+do
+Remainder=$(( $NUM % 2 ))
+if [ $Remainder -eq  0 ]
+then
+echo " $NUM "
+fi
+NUM=$((NUM+1))
+done
+echo "================="
+
+# UNTIL loop
+NUM=1
+until [ $NUM -gt 20 ]
+do
+Remainder=$(( $NUM % 2 ))
+if [ $Remainder -ne  0 ]
+then
+echo " $NUM "
+fi
+NUM=$((NUM+1))
+done
+
+echo "=======================
+# Function
+divide(){
+div=$(($1/$2))
+echo " The division of $1 and $2 is $div "
+}
+
+multiply(){
+mul=$((div))
+echo "The mult is $mul"
+}
+read -p "Enter a number >> " num1
+read -p "Enter another number >> " num2
+
+divide $num1  $num2
