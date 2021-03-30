@@ -235,4 +235,4 @@ echo "$mul"
 mul=$(multiply 4 34)
 echo "$mul"
 
-                     # END OF THE CHALLENGE
+                     echo"END OF THE CHALLENGE"
