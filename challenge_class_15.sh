@@ -172,9 +172,23 @@ func () {
 
 local reminder=$(($1 % $2))
 echo "$reminder"
-
+echo "$DATE"
 }
 reminder="$(func 10 3)"
+DATE=$(date)
+echo -e "Today's date is: $DATE\nReminder of 10/3 is: "$reminder 
 
-echo "Reminder of 10/3 is: "$reminder 
+
+
+#
+echo "-----Section 14 - Create a function that returns the multiplication of 4 by 34-----"
+
+
+multiplication () {
+  local result=$(($1 * $2))
+  echo "$result"
+}
+
+result=$(multiplication 4 34)
+echo "The sum is: "$result
 
