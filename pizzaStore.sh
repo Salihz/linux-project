@@ -54,41 +54,40 @@ fi
 # MENU
 
 printf "${BLUE}"
-printf "======  OUR MENU LIST ======"
-printf "
 
-1.PEPPERONI PIZZA
+price_L=23
+price_M=18
+price_S=14
+printf "======  OUR MENU LIST ======\n"
+printf "1.Pepperoni pizza
+             -large size = $price_L
+             -Medium size = $price_M
+             -small  size = $price_S
 
-    -Large size = 23
-    -Medium size = 18
-    -Small  size = 14
+    2.Veggie pizza
+            -large size = $price_L
+             -Medium size = $price_M
+             -small  size = $price_S
+    3.Meat pizza
+            -large size = $price_L
+             -Medium size = $price_M
+             -small  size = $price_S
 
-2.VEGGIE PIZZA
-
-    -Large size = 23
-    -Medium size = 18
-    -Small  size = 14
-
-3.MEAT PIZZA
-
-    -Large size = 23
-    -Medium size = 18
-    -Small  size = 14
-
-4.CHEESE PIZZA
-
-    -Large size = 23
-    -Medium size = 18
-    -Small  size = 14"
-
+    4.Cheese pizza
+             -large size = $price_L
+             -Medium size = $price_M
+             -small  size = $price_S\n"
 
 printf "${STOP}\n"
 
-printf "Choose your pizza , PEPPERONI=1 VEGGIE=2 MEAT=3 CHEESE=4 :\n" TYPE
+TOTAL=0
+while true
+do
+printf "Choose your pizza , (1)for PEPPERONI, (2) for VEGGIE, (3) for MEAT, (4) for CHEESE\n" TYPE
 read TYPE
 if [ $TYPE == 1 ]
 then
-echo "YOU CHOOSE PEPPERONI PIZZA"
+echo "YOU CHOOSE PEPPERONI PIZZA  "
 elif [ $TYPE == 2 ]
 then
 echo "YOU CHOOSE VEGGIE PIZZA"
@@ -104,7 +103,7 @@ fi
 
 
 shopt -s nocasematch
-echo -n "choose the size: (s) for SMALL, (m) for MEDIUM, (l) for LARGE :" SIZE 
+echo -n "choose the size: (s) for SMALL, (m) for MEDIUM, (l) for LARGE"  #SIZE 
 read SIZE
 case $SIZE in
 s)
@@ -120,12 +119,45 @@ echo -n "You selected large size pizza"
 echo -n "Information not available"
 ;;
 esac
+
+PRICE=
 echo ""
+         if [ $SIZE == l ]
+         then
+         printf "${ORANGE}"
+         printf "Large pizza is ${price_L}\n "
+         PRICE=${price_L}
+         printf "${STOP}"
 
+         elif [ $SIZE == m ]
+         then
+         PRICE=${price_M}
+         echo "Medium pizza is $ $price_M"
+         PRICE=${price_M}
+       
 
+         elif [ $SIZE == s ]
+         then
+         echo "Small pizza is $ $price_S"
+         PRICE=${price_S}
+        
+         
+         else
+         echo "NOTHING SELECTED"
+         fi
 
-echo "test"
+printf "Do you want another pizza? (y) for YES (n) for NO"
+read Another_Pizza
 
+((TOTAL+=$PRICE ))
 
+if [ $Another_Pizza == y ]
+then
+echo "choose your pizza : "
 
-                         
+else
+break
+fi
+done
+echo "Your total is $ $TOTAL"
+
