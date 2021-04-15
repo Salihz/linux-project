@@ -29,26 +29,20 @@ if [ $order == 1 ]
 then
 echo "YOU SELECTED : DELIVERY"
 read -p "Enter your Address : " Address
-printf "\nplease Verify your information :
+printf "\nYour information :
 First Name : $FName
 Last Name : $LName
 Phone Number : $Pnumber
 Address  : $Address\n"
-printf "Press [1] for CORRECT INFO | Press [2] for INCORRECT INFO :" info_ver
-read info_ver
-if [ $info_ver == 1 ]
-then
-echo "YOU SELECTED  DELIVERY"
-elif [ $info_ver == 2 ]
-then
-echo "INCORRECT INFO"
-fi
+
+sleep 2
 
 elif [ $order == 2 ]
 then
 echo "YOU SELECTED PICK-UP"
+sleep 2
 else
-echo "Nothing"
+echo "Nothing Selected"
 fi
 
 # MENU
@@ -58,25 +52,15 @@ printf "${BLUE}"
 price_L=23
 price_M=18
 price_S=14
-printf "======  OUR MENU LIST ======\n"
-printf "1.Pepperoni pizza
-             -large size = $price_L
-             -Medium size = $price_M
-             -small  size = $price_S
 
-    2.Veggie pizza
-            -large size = $price_L
-             -Medium size = $price_M
-             -small  size = $price_S
-    3.Meat pizza
-            -large size = $price_L
-             -Medium size = $price_M
-             -small  size = $price_S
+printf "\n==============================  OUR MENU LIST  =============================="
+printf "\n1.Pepperoni pizza  | 2.Veggie pizza   | 3.Meat pizza     | 4.Cheese pizza   |
+|                  |                  |                  |                  | 
+| Large size = $price_L  | Large size = $price_L  | Large size = $price_L  | Large size = $price_L  |
+| Medium size = $price_M | Medium size = $price_M | Medium size = $price_M | Medium size = $price_M |
+| Small  size = $price_S | Small  size = $price_S | Small  size = $price_S | Small  size = $price_S |
+============================================================================="
 
-    4.Cheese pizza
-             -large size = $price_L
-             -Medium size = $price_M
-             -small  size = $price_S\n"
 
 printf "${STOP}\n"
 
@@ -159,5 +143,6 @@ else
 break
 fi
 done
-echo "Your total is $ $TOTAL"
-
+echo "--------------------------"
+echo "ORDER TOTAL IS: $ $TOTAL"
+echo "--------------------------"
