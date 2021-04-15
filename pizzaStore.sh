@@ -87,7 +87,7 @@ fi
 
 
 shopt -s nocasematch
-echo -n "choose the size: (s) for SMALL, (m) for MEDIUM, (l) for LARGE"  #SIZE 
+echo -n "choose the size: (s) for SMALL, (m) for MEDIUM, (l) for LARGE: "  #SIZE 
 read SIZE
 case $SIZE in
 s)
@@ -130,7 +130,7 @@ echo ""
          echo "NOTHING SELECTED"
          fi
 
-printf "Do you want another pizza? (y) for YES (n) for NO"
+printf "Do you want another pizza? (y) for YES (n) for NO: "
 read Another_Pizza
 
 ((TOTAL+=$PRICE ))
@@ -143,6 +143,12 @@ else
 break
 fi
 done
-echo "--------------------------"
+
+DATE=$(date)
+printf "${ORANGE}"
+echo -e "\n--------------------------"
 echo "ORDER TOTAL IS: $ $TOTAL"
 echo "--------------------------"
+echo -e "\nThank you for visiting us!\n"
+echo "$DATE"
+printf "${STOP}\n"
